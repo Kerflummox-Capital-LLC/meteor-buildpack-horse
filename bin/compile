@@ -16,7 +16,7 @@ APP_VERSION=$(cat package.json \
   | sed 's/[",]//g'
   | tr -d '[[:space:]]')
   
-export APP_VERSION=\${APP_VERSION}
+export APP_VERSION=${APP_VERSION}
 
 # Load config vars into environment (from https://devcenter.heroku.com/articles/buildpack-api)
 export_env_dir() {
