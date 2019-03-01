@@ -112,8 +112,15 @@ function METEOR {
 #
 # Set package version number
 #
-export APP_VERSION=$(METEOR node -p "require('./package.json').version")
+
+echo "-----> Adding script to rev APP_VERSION"
+cat > "$APP_CHECKOUT_DIR"/.profile.d/app_version.sh <<EOF
+  #!/bin/bash
+  export APP_VERSION=$(METEOR node -p "require('./package.json').version")
+  echo "Set env version to:" $APP_VERSION
+EOF
 echo "New Verion:" $APP_VERSION
+
 
 #
 # Build the meteor app!
