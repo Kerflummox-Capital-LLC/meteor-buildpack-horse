@@ -43,7 +43,7 @@ if [ -n "$BUILDPACK_CLEAR_CACHE" ]; then
 fi
 
 #
-# Find the meteor app ($APP_SOURCE_DIR).
+# Find the meteor app ($APP_SOURCE_DIR).6d
 #
 
 # Set meteor app dir's location to the root of the git repo, plus the value of
@@ -115,7 +115,9 @@ function METEOR {
 
 PACKAGE_VERSION=$(METEOR node -p "require('./package.json').version")
 echo "New Verion:" $PACKAGE_VERSION
-export APP_VERSION="${PACKAGE_VERSION}"
+export APP_VERSION=$PACKAGE_VERSION
+echo $PACKAGE_VERION
+echo $APP_VERSION
 
 #
 # Build the meteor app!
