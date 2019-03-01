@@ -112,12 +112,8 @@ function METEOR {
 #
 # Set package version number
 #
-
-PACKAGE_VERSION=$(METEOR node -p "require('./package.json').version")
-echo "New Verion:" $PACKAGE_VERSION
-export APP_VERSION=$PACKAGE_VERSION
-echo $PACKAGE_VERION
-echo $APP_VERSION
+export APP_VERSION=$(METEOR node -p "require('./package.json').version")
+echo "New Verion:" $APP_VERSION
 
 #
 # Build the meteor app!
