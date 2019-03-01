@@ -109,10 +109,12 @@ function METEOR {
   HOME="$METEOR_DIR" "$METEOR_DIR/.meteor/meteor" $ARGS
 }
 
+# make dir for .profile.d
+mkdir -p "$APP_CHECKOUT_DIR"/.profile.d
+
 #
 # Set package version number
 #
-
 echo "-----> Adding script to rev APP_VERSION"
 cat > "$APP_CHECKOUT_DIR"/.profile.d/app_version.sh <<EOF
   #!/bin/bash
@@ -225,7 +227,6 @@ fi
 #
 # Add an export of PATH which includes our compile dir, etc.
 echo "-----> Adding PATH environment"
-mkdir -p "$APP_CHECKOUT_DIR"/.profile.d
 cat > "$APP_CHECKOUT_DIR"/.profile.d/path.sh <<EOF
   #!/bin/sh
   export PATH=\$HOME/$COMPILE_DIR_SUFFIX/bin:\$PATH
