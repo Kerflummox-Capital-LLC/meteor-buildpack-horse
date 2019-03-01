@@ -15,7 +15,8 @@ PACKAGE_VERSION=$(cat package.json \
   awk -F: '{ print $2 }' \
   sed 's/[",]//g'
   tr -d '[[:space:]]')
-  
+
+echo "New Verion:" $PACKAGE_VERSION
 export APP_VERSION=${PACKAGE_VERSION}
 
 # Load config vars into environment (from https://devcenter.heroku.com/articles/buildpack-api)
