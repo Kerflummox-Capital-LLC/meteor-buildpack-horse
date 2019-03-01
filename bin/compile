@@ -9,10 +9,6 @@ set -e
 # debug verbosely.
 #set -x
 
-PACKAGE_VERSION=$(node -p "require('./package.json').version")
-echo "New Verion:" $PACKAGE_VERSION
-export APP_VERSION=${PACKAGE_VERSION}
-
 # Load config vars into environment (from https://devcenter.heroku.com/articles/buildpack-api)
 export_env_dir() {
   env_dir=$1
@@ -112,6 +108,14 @@ function METEOR {
   ARGS=$@
   HOME="$METEOR_DIR" "$METEOR_DIR/.meteor/meteor" $ARGS
 }
+
+#
+# Set package version number
+#
+
+PACKAGE_VERSION=$(METEOR node -p "require('./package.json').version")
+echo "New Verion:" $PACKAGE_VERSION
+export APP_VERSION=${PACKAGE_VERSION}
 
 #
 # Build the meteor app!
